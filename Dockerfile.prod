@@ -1,0 +1,54 @@
+FROM ubuntu:kinetic-20221101
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Build this Dockerfile with the following command: 
+# docker build --no-cache --build-arg USRNM=$(whoami) --build-arg USRUID=$(id -u) --build-arg USRGID=$(id -g) -t hashmaxxing:latest .
+# This ensures that you will have the right permissions inside docker
+
+# User and group variables
+ARG USRNM
+ARG USRUID
+ARG USRGID
+
+# Create user and add to the specified group
+RUN groupadd -g $USRGID $USRNM || echo "Could not create group with GID $USRGID".
+RUN useradd -g $USRGID -u $USRUID -m $USRNM
+
+# install sudo
+RUN apt-get update && apt-get -y install sudo
+     
+# Add user to sudoers
+RUN adduser $USRNM sudo
+
+# Ensure sudo group users are not 
+# asked for a password when using 
+# sudo command by ammending sudoers file
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN echo 'alias ll="ls -lah"' >> /home/$USRNM/.bashrc
+
+# make sure apt is up to date
+RUN apt-get update --fix-missing && apt-get -yq dist-upgrade && \
+apt-get install --no-install-recommends -yq build-essential curl ca-certificates cmake pkg-config libssl-dev
+
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+ENV HASHMAXXING_CONFIG_PATH=/root/.hashmaxxing
+COPY config $HASHMAXXING_CONFIG_PATH
+
+COPY hashmaxxing /root/tmp/hashmaxxing
+
+RUN chmod 777 /root/tmp/hashmaxxing
+RUN cd /root/tmp/hashmaxxing &&  bash -c 'source ~/.cargo/env; cargo build --release'
+RUN cp /root/tmp/hashmaxxing/target/release/hashmaxxing /usr/local/bin
+
+# clean up
+RUN rm -rf /root/tmp/*
+
+ENV HASHMAXXING_ACCOUNTS_PATH=/host/hashmaxxing_accounts/
+
+ENTRYPOINT "/bin/bash"

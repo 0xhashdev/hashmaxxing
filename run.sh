@@ -1,0 +1,1 @@
+docker run -it -p 5555:3000 -v ~/Documents/crypto:/host hashgold-rustminer:latest

@@ -1,0 +1,74 @@
+{
+    "ethereum": {
+        "name": "Ethereum Mainnet",
+        "testnet": false,
+        "rpcs": ["https://rpc.payload.de", "https://rpc.ankr.com/eth", "https://mainnet.infura.io/v3/"],
+        "chainID": 1,
+        "explorers": ["https://etherscan.io/"],
+        "isEIP1559": true
+    },
+    "ethereum_goerli": {
+        "name": "Ethereum Goerli",
+        "testnet": true,
+        "rpcs": ["https://goerli.blockpi.network/v1/rpc/public"],
+        "chainID": 5,
+        "explorers": ["https://goerli.etherscan.io/"],
+        "isEIP1559": true
+    },
+    "arbitrum_one" :{
+        "name": "Arbitrum One",
+        "testnet": false,
+        "rpcs": ["https://arb1.arbitrum.io/rpc"],
+        "chainID": 42161,
+        "explorers": ["https://arbiscan.io/"],
+        "isEIP1559": false
+    },
+    "arbitrum_nova": {
+        "name": "Arbitrum Nova",
+        "testnet": false,
+        "rpcs": ["https://nova.arbitrum.io/rpc"],
+        "chainID": 42170,
+        "explorers": ["https://nova.arbiscan.io/"],
+        "isEIP1559": false
+    },
+    "arbitrum_goerli": {
+        "name": "Arbitrum Goerli",
+        "testnet": true,
+        "rpcs": ["https://endpoints.omniatech.io/v1/arbitrum/goerli/public"],
+        "chainID": 421613,
+        "explorers": ["https://goerli.arbiscan.io/"],
+        "isEIP1559": false
+    },
+    "polygon_mainnet": {
+        "name": "Polygon Mainnet",
+        "testnet": false,
+        "rpcs": ["https://rpc-mainnet.maticvigil.com"],
+        "chainID": 137,
+        "explorers": ["https://polygonscan.com/"],
+        "isEIP1559": false
+    },
+    "polygon_mumbai": {
+        "name": "Polygon Mumbai",
+        "testnet": true,
+        "rpcs": ["https://rpc-mumbai.maticvigil.com"],
+        "chainID": 8001,
+        "explorers": ["https://mumbai.polygonscan.com/"],
+        "isEIP1559": false
+    },
+    "zksyncv2_goerli": {
+        "name": "ZKSync V2.0 Goerli",
+        "testnet": true, 
+        "rpcs": ["https://zksync2-testnet.zksync.dev"],
+        "chainID": 280,
+        "explorers": ["https://goerli.explorer.zksync.io/"],
+        "isEIP1559": false
+    },
+    "zkevm_testnet": {
+        "name": "Polygon ZKEVM testnet",
+        "testnet": true, 
+        "rpcs": ["https://rpc.public.zkevm-test.net"],
+        "chainID": 1422,
+        "explorers": ["https://explorer.public.zkevm-test.net"],
+        "isEIP1559": false
+    }
+}

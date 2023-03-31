@@ -1,0 +1,24 @@
+[package]
+name = "hashmaxxing"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4.23"
+clap = "4.1.4"
+colored = "2.0.0"
+eth-keystore = "0.5.0"
+ethers = "1.0.2"
+json = "0.12.4"
+ndarray = "0.15.6"
+num_cpus = "1.15.0"
+rand = "0.8.5"
+rayon = "1.6.1"
+rpassword = "7.2.0"
+serde_json = "1.0.93"
+tokio = "1.25.0"
+web3 = "0.18.0"
+web3-hash-utils = "1.0.0"
+
