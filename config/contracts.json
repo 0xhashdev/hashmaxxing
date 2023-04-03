@@ -1,6 +1,6 @@
 {
   "ethereum_goerli": {
-    "address": "0xaDb042Aad97Cbc27a7a098c687bCD185B7E52F86",
+    "address": "0x2EB4a0B5bC0D6cA9fA1ef39c250809f53FDC598f",
     "abi": [
       {
         "inputs": [
@@ -642,7 +642,7 @@
     ]
   },
   "arbitrum_goerli": {
-    "address": "0xE69e544832926514d201E659a959491A9121F7cc",
+    "address": "0x5473F7cc11B0A6389bC98D3746b6bbEc4Aa28dCA",
     "abi": [
       {
         "inputs": [
