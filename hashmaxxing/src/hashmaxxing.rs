@@ -47,10 +47,10 @@ pub fn hashmaxxing_multithread(nonce_count_hash: [u8; 32], chain_id_hash: [u8; 3
 
         threads.push(thread::spawn(move || {
             let mut nonce = [0u8; 32];
-            let mut rng = rand::thread_rng();
+            let mut rng = thread_rng();
             
             while !*is_nonce_found_clone.read().unwrap() {
-                rand::thread_rng().fill_bytes(&mut nonce);
+                thread_rng().fill_bytes(&mut nonce);
                 let new_hash = get_new_hash(nonce_count_hash, chain_id_hash, beneficiary, nonce);
 
                 if H256(new_hash) > H256(*targ_hash_clone.read().unwrap()) {
@@ -74,7 +74,7 @@ pub fn hashmaxxing_single_thread(nonce_count_hash: [u8; 32], chain_id_hash: [u8;
     let targ_hash_h256 = H256(targ_hash);
     let mut i: u64 = 0;
     loop {
-        rand::thread_rng().fill_bytes(&mut nonce);
+        thread_rng().fill_bytes(&mut nonce);
         let new_hash = get_new_hash(nonce_count_hash, chain_id_hash, beneficiary, nonce);
 
         if H256(new_hash) > targ_hash_h256 {

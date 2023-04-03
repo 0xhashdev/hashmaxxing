@@ -5,10 +5,10 @@ use ethers::{
     prelude::*,
 };
 
-use chrono::prelude::*;
+use chrono::offset::*;
 
 pub fn  localnow() -> String {
-    return format!("{}", chrono::offset::Local::now());
+    return format!("{}", Local::now());
 }
 
 pub fn eth2wei(ethval: f64) -> U256 {

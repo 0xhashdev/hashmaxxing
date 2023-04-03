@@ -14,7 +14,7 @@ use json;
 use std::env;
 use std::io::{self, BufRead, prelude::*};
 use std::fs;
-use std::mem;
+// use std::mem;
 use std::process;
 use std::path::{PathBuf, Path};
 use std::sync::{Arc, Mutex, RwLock};
@@ -28,7 +28,7 @@ use ndarray::Array;
 use rand::prelude::*;
 use rand::{Rng, thread_rng};
 
-use web3_hash_utils::keccak256;
+// use web3_hash_utils::keccak256;
 
 use rpassword::prompt_password;
 use clap::{Arg, Command, ArgAction};
