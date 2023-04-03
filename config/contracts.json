@@ -1,6 +1,6 @@
 {
   "ethereum_goerli": {
-    "address": "0x2EB4a0B5bC0D6cA9fA1ef39c250809f53FDC598f",
+    "address": "0x72680c4D435d276c4bF56f82b6471D0A36cc0B20",
     "abi": [
       {
         "inputs": [
@@ -91,6 +91,25 @@
           }
         ],
         "name": "NonceRejected",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
         "type": "event"
       },
       {
@@ -218,19 +237,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "bridge",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "address",
@@ -305,6 +311,20 @@
       },
       {
         "inputs": [],
+        "name": "disableBridge",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "enableBridge",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "genesisBlockNum",
         "outputs": [
           {
@@ -340,6 +360,19 @@
           }
         ],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getL2Address",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -542,22 +575,16 @@
       },
       {
         "inputs": [],
-        "name": "reset_target_hash",
+        "name": "renounceOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       },
       {
         "inputs": [],
-        "name": "router",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
+        "name": "reset_target_hash",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -636,24 +663,37 @@
             "type": "bool"
           }
         ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       }
     ]
   },
   "arbitrum_goerli": {
-    "address": "0x5473F7cc11B0A6389bC98D3746b6bbEc4Aa28dCA",
+    "address": "0xD38851882Ce00F259c63eC80609f18F1C7a8D07D",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_bridge",
+            "name": "_l2Gateway",
             "type": "address"
           },
           {
             "internalType": "address",
-            "name": "_router",
+            "name": "_l1Address",
             "type": "address"
           }
         ],
@@ -733,6 +773,25 @@
           }
         ],
         "name": "NonceRejected",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
         "type": "event"
       },
       {
@@ -860,19 +919,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "bridge",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "address",
@@ -942,6 +988,20 @@
             "type": "bool"
           }
         ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "disableBridge",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "enableBridge",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       },
@@ -1092,12 +1152,12 @@
       },
       {
         "inputs": [],
-        "name": "isArbitrumEnabled",
+        "name": "l1Address",
         "outputs": [
           {
-            "internalType": "uint8",
+            "internalType": "address",
             "name": "",
-            "type": "uint8"
+            "type": "address"
           }
         ],
         "stateMutability": "view",
@@ -1130,56 +1190,10 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "l2CustomTokenAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "gasPriceBid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForGateway",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "creditBackAddress",
-            "type": "address"
-          }
-        ],
-        "name": "registerTokenOnL2",
+        "inputs": [],
+        "name": "renounceOwnership",
         "outputs": [],
-        "stateMutability": "payable",
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -1187,19 +1201,6 @@
         "name": "reset_target_hash",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "router",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -1278,1293 +1279,31 @@
             "type": "bool"
           }
         ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       }
     ]
   },
   "ethereum": {
-    "address": "0xaDb042Aad97Cbc27a7a098c687bCD185B7E52F86",
-    "abi": [
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_bridge",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_router",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          },
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "value",
-            "type": "uint256"
-          }
-        ],
-        "name": "Approval",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "_fromHashMaxxer",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_nonce",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_newHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "NonceAccepted",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "_fromHashMaxxer",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_nonce",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_newHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "NonceRejected",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "oldTargetHash",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "newTargetHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "TargetHashChanged",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "from",
-            "type": "address"
-          },
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "to",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "value",
-            "type": "uint256"
-          }
-        ],
-        "name": "Transfer",
-        "type": "event"
-      },
-      {
-        "inputs": [],
-        "name": "_genesisBlockNum",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          }
-        ],
-        "name": "allowance",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "bridge",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "bridgeBurn",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "bridgeMint",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
-          {
-            "internalType": "uint8",
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "subtractedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "decreaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "genesisBlockNum",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getChainId",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "chainId",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getChainIdHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "a",
-            "type": "address"
-          }
-        ],
-        "name": "getNonceCount",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "a",
-            "type": "address"
-          }
-        ],
-        "name": "getNonceCountHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getTargetHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getTerminalTimestamp",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "beneficiary",
-            "type": "address"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "nonce",
-            "type": "bytes32"
-          }
-        ],
-        "name": "hashmaxx",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "addedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "increaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "isArbitrumEnabled",
-        "outputs": [
-          {
-            "internalType": "uint8",
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "l2CustomTokenAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "gasPriceBid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForGateway",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "creditBackAddress",
-            "type": "address"
-          }
-        ],
-        "name": "registerTokenOnL2",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "reset_target_hash",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "router",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transfer",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "sender",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transferFrom",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      }
-    ]
+    "address": "0x",
+    "abi": []
+      
   },
   "arbitrum_one": {
-    "address": "0xA1971CFd184fdb1375cAb37cAAF4Ebf1F5F8f38b",
-    "abi": [
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_bridge",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_router",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          },
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "value",
-            "type": "uint256"
-          }
-        ],
-        "name": "Approval",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "_fromHashMaxxer",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_nonce",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_newHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "NonceAccepted",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "_fromHashMaxxer",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_nonce",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "_newHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "NonceRejected",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "oldTargetHash",
-            "type": "bytes32"
-          },
-          {
-            "indexed": false,
-            "internalType": "bytes32",
-            "name": "newTargetHash",
-            "type": "bytes32"
-          }
-        ],
-        "name": "TargetHashChanged",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "from",
-            "type": "address"
-          },
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "to",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "value",
-            "type": "uint256"
-          }
-        ],
-        "name": "Transfer",
-        "type": "event"
-      },
-      {
-        "inputs": [],
-        "name": "_genesisBlockNum",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          }
-        ],
-        "name": "allowance",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "bridge",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "bridgeBurn",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "bridgeMint",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
-          {
-            "internalType": "uint8",
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "subtractedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "decreaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "genesisBlockNum",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getChainId",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "chainId",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getChainIdHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "a",
-            "type": "address"
-          }
-        ],
-        "name": "getNonceCount",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "a",
-            "type": "address"
-          }
-        ],
-        "name": "getNonceCountHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getTargetHash",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getTerminalTimestamp",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "beneficiary",
-            "type": "address"
-          },
-          {
-            "internalType": "bytes32",
-            "name": "nonce",
-            "type": "bytes32"
-          }
-        ],
-        "name": "hashmaxx",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "addedValue",
-            "type": "uint256"
-          }
-        ],
-        "name": "increaseAllowance",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "isArbitrumEnabled",
-        "outputs": [
-          {
-            "internalType": "uint8",
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "l2CustomTokenAddress",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxSubmissionCostForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForCustomBridge",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "maxGasForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "gasPriceBid",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForGateway",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "valueForRouter",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "creditBackAddress",
-            "type": "address"
-          }
-        ],
-        "name": "registerTokenOnL2",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "reset_target_hash",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "router",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transfer",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "sender",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "recipient",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "transferFrom",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      }
-    ]
+    "address": "0x",
+    "abi": []
   }
 }

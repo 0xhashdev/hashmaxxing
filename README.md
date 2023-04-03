@@ -57,12 +57,12 @@ Token:
 Gateway: 
 
 ### Ethereum Goerli
-Token: [0x2EB4a0B5bC0D6cA9fA1ef39c250809f53FDC598f](https://goerli.etherscan.io/address/0x2EB4a0B5bC0D6cA9fA1ef39c250809f53FDC598f)
+Token: [0x72680c4D435d276c4bF56f82b6471D0A36cc0B20](https://goerli.etherscan.io/address/0x72680c4D435d276c4bF56f82b6471D0A36cc0B20)
 
-Gateway: [0x1203831D4C677ff9167404Fa6c4d887e4221Ece9](https://goerli.etherscan.io/address/0x1203831D4C677ff9167404Fa6c4d887e4221Ece9)
+Gateway: [0x1b50aA79dA53a037f3545C2C275F33d0A94FcFcf](https://goerli.etherscan.io/address/0x1b50aA79dA53a037f3545C2C275F33d0A94FcFcf)
 
 ### Arbitrum Goerli
-Token: [0x5473F7cc11B0A6389bC98D3746b6bbEc4Aa28dCA](https://goerli.arbiscan.io/address/0x5473F7cc11B0A6389bC98D3746b6bbEc4Aa28dCA)
+Token: [0xD38851882Ce00F259c63eC80609f18F1C7a8D07D](https://goerli.arbiscan.io/address/0xD38851882Ce00F259c63eC80609f18F1C7a8D07D)
 
-Gateway: [0x7189d6A193d552c5af6B671Cd2E30942bEa90afF](https://goerli.arbiscan.io/address/0x7189d6A193d552c5af6B671Cd2E30942bEa90afF)
+Gateway: [0x4c6Dc6cC8D78c74c36860902c2E9bf37b1Ed188D](https://goerli.arbiscan.io/address/0x4c6Dc6cC8D78c74c36860902c2E9bf37b1Ed188D)
 
