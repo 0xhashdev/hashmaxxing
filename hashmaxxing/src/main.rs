@@ -180,7 +180,7 @@ async fn main() {
             displaying the help information from --help or -h"
         );
 
-    println!("{}", "=======================================================".bright_blue().bold());
+    println!("{}", "\n=======================================================".bright_blue().bold());
     println!("{}             {} {}             {}", "||".bright_blue().bold(), "Hashmaxxing version".bright_blue().bold(), __version__.bright_blue().bold(), "||".bright_blue().bold());
     println!("{}", "=======================================================".bright_blue().bold());
     println!("{}", license);
