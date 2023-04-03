@@ -41,6 +41,9 @@ To learn more about possible flags and command line arguments, run `hashmaxxing 
 
 **Note:** you can try running the software using testnet ETH and testnet contracts by  specifying `--network=ethereum_goerli` or `--network=arbitrum_goerli`.
 
+After a successful installation, when running the program, you should see something like this:
+<img src="./successful.png"/></br>
+
 # Important Addresses
 
 ### Ethereum Mainnet

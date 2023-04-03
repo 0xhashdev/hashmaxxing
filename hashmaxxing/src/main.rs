@@ -626,6 +626,7 @@ async fn main() {
 
                 let call = contract.method::<(H160, H256), H256 >("hashmaxx", (H160(addr2bytes(&selected_beneficiary)), H256(new_nonce))).unwrap();
 
+                // TODO: Handle gas fee changes! Currently the program fails if maxFeePerGas < baseFee. need to fetch gas price and adjust tx accordingly
                 if chains[selected_chain_name]["isEIP1559"].as_bool().unwrap() {
 
                     match client.send_transaction(call.tx.clone(), None).await {
