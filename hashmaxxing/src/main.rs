@@ -448,8 +448,7 @@ async fn main() {
         let infos = format!("INFO: beneficiary address: {}.", selected_beneficiary);
         println!("{} {}", infos.yellow().bold(), "This address will receive tokens.".magenta());
 
-        println!("{}", format!("INFO: You are interacting with contract {} on chain {}", contracts[selected_chain_name]["address"].as_str().unwrap() , selected_chain_name).yellow().bold());
-
+        
         if matches.get_flag("yes") {
             println!("Continuing...");
         } else {
@@ -462,14 +461,25 @@ async fn main() {
             }
         }
 
+        let mut selected_contract_address = "";
+        match contracts[selected_chain_name]["address"].as_str() {
+            Some (addr) => {
+                selected_contract_address = addr;
+            }
+            None => {
+                println!("{}", format!("ERROR Cannot read contract address for chain {}.", selected_chain_name).red().bold());
+            }
+        };
         
         let contract = Arc::new(
             instantiate_contract(
-                contracts[selected_chain_name]["address"].as_str().unwrap(),
+                selected_contract_address,
                 &contracts[selected_chain_name]["abi"].dump(),
                 provider
             )
         );
+
+        println!("{}", format!("INFO: You are interacting with contract {} on chain {}", selected_contract_address , selected_chain_name).yellow().bold());
 
         // Get nonce count hash from contract
         let mut nonce_count_hash = [0u8; 32];
