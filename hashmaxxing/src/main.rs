@@ -620,8 +620,9 @@ async fn main() {
                     )
                 ).magenta().bold()
             );
+
+            println!("{}", format!("NOTE: Hashgold currently has low liquidity. Kindly, use some of your tokens to provide DEX liquidity.").bright_red().bold());
     
-            
             if !matches.get_flag("dry_run") {
 
                 let call = contract.method::<(H160, H256), H256 >("hashmaxx", (H160(addr2bytes(&selected_beneficiary)), H256(new_nonce))).unwrap();
