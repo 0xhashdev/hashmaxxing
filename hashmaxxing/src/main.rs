@@ -663,21 +663,20 @@ async fn main() {
                                             }
                                         }
                                         None => {
-                                            println!("{}", format!("Error sending transaction: {}\nTried to send the following tx:\n {:?}", "txok is None", call.tx.clone()).red().bold());
+                                            println!("{}", format!("Error while unwrapping `confirmed_tx`: {}\nTried to send the following tx:\n {:?}", "txok is None", call.tx.clone()).red().bold());
                                             process::exit(0x03);
                                         }
                                     }
                                 }
                                 Err (e) => {
-                                    println!("{}", format!("Error sending transaction: {}\nTried to send the following tx:\n {:?}", e, call.tx.clone()).red().bold());
+                                    println!("{}", format!("Error while unwrapping `txok`: {}\nTried to send the following tx:\n {:?}", e, call.tx.clone()).red().bold());
                                     process::exit(0x03);
                                 }
                             }
                         
-                           
                         }
                         Err(e) => {
-                            println!("{}", format!("Error sending transaction: {}\nTried to send the following tx:\n {:?}", e, call.tx).red().bold());
+                            println!("{}", format!("Error while `resp.await`: {}\nTried to send the following tx:\n {:?}", e, call.tx).red().bold());
                             process::exit(0x03);
                         }
                     }
@@ -729,19 +728,20 @@ async fn main() {
                                             
                                         }
                                         None => {
-                                            println!("{}", format!("Error sending transaction: {}\nTried to send the following tx:\n {:?}", "txok is None", legacytx.clone()).red().bold());
+                                            println!("{}", format!("Error while unwrapping `confirmed_tx`: {}\nTried to send the following tx:\n {:?}", "txok is None", call.tx.clone()).red().bold());
                                             process::exit(0x03);
                                         }
                                     }
                                 }
                                 Err (e) => {
-                                    println!("{}", format!("Error sending transaction: {}\nTried to send the following tx:\n {:?}", e, legacytx.clone()).red().bold());
+                                    println!("{}", format!("Error while unwrapping `txok`: {}\nTried to send the following tx:\n {:?}", e, call.tx.clone()).red().bold());
                                     process::exit(0x03);
                                 }
                             }
+                           
                         }
                         Err(e) => {
-                            println!("{}", format!("Error sending transaction: {}", e).red().bold());
+                            println!("{}", format!("Error while `resp.await`: {}\nTried to send the following tx:\n {:?}", e, call.tx).red().bold());
                             process::exit(0x03);
                         }
                     }

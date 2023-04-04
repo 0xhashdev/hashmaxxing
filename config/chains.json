@@ -2,7 +2,7 @@
     "ethereum": {
         "name": "Ethereum Mainnet",
         "testnet": false,
-        "rpcs": ["https://rpc.payload.de", "https://rpc.ankr.com/eth", "https://mainnet.infura.io/v3/"],
+        "rpcs": ["https://ethereum.blockpi.network/v1/rpc/public", "https://rpc.payload.de", "https://rpc.ankr.com/eth", "https://mainnet.infura.io/v3/"],
         "chainID": 1,
         "explorers": ["https://etherscan.io/"],
         "isEIP1559": true
